@@ -25,3 +25,12 @@ F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Modules.Vouchers.MoneyOf
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\obj\Debug\eCommerce.Modules.Vouchers.MoneyOff.csprojResolveAssemblyReference.cache
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\obj\Debug\eCommerce.Modules.Vouchers.MoneyOff.dll
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\obj\Debug\eCommerce.Modules.Vouchers.MoneyOff.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\bin\Debug\eCommerce.Modules.Vouchers.MoneyOff.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\bin\Debug\eCommerce.Modules.Vouchers.MoneyOff.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\bin\Debug\eCommerce.Contracts.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\bin\Debug\eCommerce.Model.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\bin\Debug\eCommerce.Contracts.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\bin\Debug\eCommerce.Model.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\obj\Debug\eCommerce.Modules.Vouchers.MoneyOff.csprojResolveAssemblyReference.cache
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\obj\Debug\eCommerce.Modules.Vouchers.MoneyOff.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Modules.Vouchers.MoneyOff\obj\Debug\eCommerce.Modules.Vouchers.MoneyOff.pdb

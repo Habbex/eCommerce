@@ -19,3 +19,10 @@ F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Model\bin\Debug\eCommerc
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Model\obj\Debug\eCommerce.Model.csprojResolveAssemblyReference.cache
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Model\obj\Debug\eCommerce.Model.dll
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Model\obj\Debug\eCommerce.Model.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Model\bin\Debug\eCommerce.Model.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Model\bin\Debug\eCommerce.Model.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Model\bin\Debug\eCommerce.Contracts.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Model\bin\Debug\eCommerce.Contracts.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Model\obj\Debug\eCommerce.Model.csprojResolveAssemblyReference.cache
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Model\obj\Debug\eCommerce.Model.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Model\obj\Debug\eCommerce.Model.pdb
