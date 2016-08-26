@@ -4,7 +4,7 @@
     ViewBag.Title = "ProductList";
 }
 
-<h2>ProductList</h2>
+<h2>Product List</h2>
 
 <p>
     @Html.ActionLink("Create New", "CreateProduct")
@@ -12,48 +12,68 @@
 
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
+@*<div class="table-condensed">*@
+    <table class="table-hover">
+
+        <tr>
+            <th style="text-align:justify">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th style="text-align:justify">
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostPrice)
+            </th>
+
+            <th >
+                @Html.DisplayName("Commands")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CostPrice)
-        </th>
-        <th></th>
+            <th style="float:right;">
+                @Html.DisplayName("Image")
+
+            </th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
 
-    <tr> 
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CostPrice)
-        </td>
-      
-        <td>
-            @Html.ActionLink("Edit", "EditProduct", new { id=item.ProductId }) |
-            
-            @Html.ActionLink("Delete", "DeleteProduct", new { id=item.ProductId })
-        </td>
-        <td>
-            <img style="width:15%" src="/images/@item.ImageUrl" alt="@item.Description" />
-        </td>
-    </tr>
-}
+        <tr style="table-layout:auto">
+            <td style="width:100px">
+
+                    @Html.DisplayFor(modelItem => item.Description)
+
+            </td>
+            <td style="width:100px">
+                @Html.DisplayFor(modelItem => item.ImageUrl)
+            </td>
+            <td style="width:100px">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+            <td style="width:100px">
+                @Html.DisplayFor(modelItem => item.CostPrice)
+            </td>
+
+            <td>
+                <div>
+                    @Html.ActionLink("Edit", "EditProduct", new { id = item.ProductId }) |
+
+                    @Html.ActionLink("Delete", "DeleteProduct", new { id = item.ProductId })
+                </div>
+            </td>
+            <td class="right">
+                <div>
+                    <div style="float:right;width: 20%;">
+                        <img style="width:100%" src="/images/@item.ImageUrl" alt="@item.Description" />
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
 
 </table>
+@*</div>*@

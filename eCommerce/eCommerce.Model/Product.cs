@@ -16,8 +16,9 @@ namespace eCommerce.Model
 
         [MaxLength(255)]
         public string ImageUrl { get; set; }
-
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         public decimal Price { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         public decimal CostPrice { get; set; }
     }
 }

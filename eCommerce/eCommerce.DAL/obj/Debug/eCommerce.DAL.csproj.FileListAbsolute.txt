@@ -74,3 +74,4 @@ F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.csproj.GenerateResource.Cache
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.dll
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.Migrations.Currency.resources

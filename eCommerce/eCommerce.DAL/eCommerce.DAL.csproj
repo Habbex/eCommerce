@@ -53,6 +53,10 @@
     <Compile Include="Migrations\201608200157056_Initial.Designer.cs">
       <DependentUpon>201608200157056_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608262215006_Currency.cs" />
+    <Compile Include="Migrations\201608262215006_Currency.Designer.cs">
+      <DependentUpon>201608262215006_Currency.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BasketRepository.cs" />
@@ -81,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608200157056_Initial.resx">
       <DependentUpon>201608200157056_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608262215006_Currency.resx">
+      <DependentUpon>201608262215006_Currency.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
