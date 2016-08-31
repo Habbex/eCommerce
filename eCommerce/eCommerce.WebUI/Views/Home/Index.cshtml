@@ -3,60 +3,30 @@
 @{
     ViewBag.Title = "Product List";
 }
-<h2>Products</h2>
-@*@foreach (var item in Model)
-    {
+<div class="text-center">
+    <h2>Products</h2>
+</div>
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet">
 
-    }*@
-
-@*<div class="ProductPic">
-
-        @foreach (var item in Model)
-        {
-            <img style="width:15%" src="/images/@item.ImageUrl" alt="@item.Description" />
-
-        }
-
-    </div>
+<!-- Custom CSS -->
+<link href="~/Content/shop-homepage.css" rel="stylesheet">
 
 
-    <div class="ProductDetails">
-
-        @foreach (var item in Model)
-        {
-
-            @Html.ActionLink(item.Description ?? "Empty Entry", "Details", new { id = item.ProductId })
-
-
-            @Html.DisplayFor(modelItem => item.Price)
-
-
-        }
-    </div>
-
-    <div class="ProductPrice">
-
-        @foreach (var item in Model)
-        {
-
-            @Html.DisplayFor(modelItem => item.Price)
-
-
-        }
-    </div>*@
 
 <div class="container">
+
+
     <div class="row">
-        <div class="col-md-3">
+        @*<div class="col-md-3">
             <p class="lead">Golden Watch</p>
             <p style="margin-right: auto"></p>
             <div class="list-group">
                 <a href="#" class="list-group-item">Category 1</a>
                 <a href="#" class="list-group-item">Category 2</a>
                 <a href="#" class="list-group-item">Category 3</a>
-            </div>
-        </div>
-
+            </div>*@
+    </div>
+    <div class="col-md-center">
         <div class="col-md-9">
             <div class="row carousel-holder">
                 <div class="col-md-12">
@@ -77,7 +47,7 @@
                                 {
                                     <div class="item @(isFirst ? "active": "")"
                                          @(isFirst = false)>
-                                        <img class="slide-image " src="/images/@item.ImageUrl" alt="Image" style="height:300px;width:800px">
+                                        <img class="slide-image " src="/images/@item.ImageUrl" alt="Image">
                                     </div>
 
                                 }
@@ -94,54 +64,54 @@
                     </div>
                 </div>
             </div>
-
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
         </div>
     </div>
 </div>
 
-<p style="margin: 2em">
-</p>
+    @*<p style="margin: 2em">
+        </p>*@
+    <div class="container">
+        <section>
+            @{
+                foreach (var item in Model)
+                {
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
 
-    @{
-        foreach (var item in Model)
-        {
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
+                            <img class="img-rounded" src="/images/@item.ImageUrl" alt="Image" style="height:70%;width:70%" />
 
-                    <img class="slide-image " src="/images/@item.ImageUrl" alt="Image" style="height:150px;width:320px" />
+                            <div class="caption">
+                                <h4 class="pull-right">@String.Format("{0:c}", item.Price)</h4>
+                                <h4>
+                                    <a href="#">@Html.ActionLink(item.Description ?? "Empty Entry", "Details", new { id = item.ProductId })</a>
 
-                    <div class="caption">
-                        <h4 class="pull-right">@String.Format("{0:c}", item.Price)</h4>
-                        <h4>
-                            <a href="#">@Html.ActionLink(item.Description ?? "Empty Entry", "Details", new { id = item.ProductId })</a>
-
-                        </h4>
-                        <p></p>
+                                </h4>
+                                <p></p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">12 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ratings">
-                        <p class="pull-right">12 reviews</p>
-                        <p>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                        </p>
-                    </div>
-                </div>
-            </div>
 
-        }
-    }
+                }
+            }
+        </section>
+    </div>
 
 
+    <script src="js/jquery.js"></script>
 
-</>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    </>
 
 

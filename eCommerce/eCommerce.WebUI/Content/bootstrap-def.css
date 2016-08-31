@@ -855,7 +855,8 @@ pre code {
 .col-lg-9,
 .col-lg-10,
 .col-lg-11,
-.col-lg-12 {
+.col-lg-12
+.col-md-center{
   position: relative;
   min-height: 1px;
   padding-right: 15px;
@@ -1121,6 +1122,7 @@ pre code {
   }
   .col-md-9 {
     width: 75%;
+
   }
   .col-md-10 {
     width: 83.33333333333334%;
@@ -1130,6 +1132,7 @@ pre code {
   }
   .col-md-12 {
     width: 100%;
+
   }
   .col-md-push-0 {
     left: auto;
@@ -1238,6 +1241,10 @@ pre code {
   }
   .col-md-offset-11 {
     margin-left: 91.66666666666666%;
+  }
+
+  .col-md-center{
+      margin: 0px auto;
   }
 }
 
@@ -6005,6 +6012,7 @@ body.modal-open,
 
 .carousel {
   position: relative;
+  margin:auto;
 }
 
 .carousel-inner {
@@ -6196,6 +6204,7 @@ body.modal-open,
     right: 20%;
     left: 20%;
     padding-bottom: 30px;
+
   }
   .carousel-indicators {
     bottom: 20px;

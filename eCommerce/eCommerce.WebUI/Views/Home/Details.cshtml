@@ -15,8 +15,13 @@
         </dt>
 
         <dd>
-            <img style="width:15%" src="/images/@Model.ImageUrl" alt="@Model.Description" />
+
+
+            <img style="width:50%" src="/images/@Model.ImageUrl" alt="@Model.Description" />
+
+
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -29,7 +34,7 @@
 
         <dt>
             @Html.DisplayNameFor(model => model.Price)
-            
+
         </dt>
 
         <dd>
@@ -46,6 +51,7 @@
 
     </dl>
 </div>
+
 <p>
     @Html.ActionLink("Add To Basket", "AddToBasket", new { id = Model.ProductId }) |
     @Html.ActionLink("Back to List", "Index")
