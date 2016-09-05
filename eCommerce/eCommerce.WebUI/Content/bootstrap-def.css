@@ -763,6 +763,20 @@ pre code {
   margin-left: auto;
 }
 
+.center{
+position:absolute;
+left:50%; top:50%;
+}
+
+.center-container{
+    position:absolute;
+    left:-3000px;
+    width:5000px; height:5000px;
+    line-height:5000px;
+    overflow:hidden;
+    margin: 0 auto;
+}
+
 .container:before,
 .container:after {
   display: table;
@@ -857,10 +871,8 @@ pre code {
 .col-lg-11,
 .col-lg-12
 .col-md-center{
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .col-xs-1,
@@ -1122,7 +1134,12 @@ pre code {
   }
   .col-md-9 {
     width: 75%;
-
+    position:absolute;
+    left:-3000px;
+    width:5000px; height:5000px;
+    line-height:5000px;
+    overflow:hidden;
+    margin: 0 auto;
   }
   .col-md-10 {
     width: 83.33333333333334%;
