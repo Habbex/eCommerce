@@ -6,7 +6,8 @@
 <div class="text-center">
     <h2>Products</h2>
 </div>
-<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet">
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<link href="~/Content/animate.css" rel="stylesheet" />
 
 <!-- Custom CSS -->
 <link href="~/Content/shop-homepage.css" rel="stylesheet">
@@ -19,64 +20,70 @@
 
 
     @*<div class="row">
-        <div class="col-md-3">
-            <p class="lead">Golden Watch</p>
-            <p style="margin-right: auto"></p>
-            <div class="list-group">
-                <a href="#" class="list-group-item">Category 1</a>
-                <a href="#" class="list-group-item">Category 2</a>
-                <a href="#" class="list-group-item">Category 3</a>
-            </div>
-    </div>*@
+            <div class="col-md-3">
+                <p class="lead">Golden Watch</p>
+                <p style="margin-right: auto"></p>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                </div>
+        </div>*@
 
     @*<div class="col-md-12">*@
-        @*<div class="col-md-center">*@
-            <div class="col-xs-12">
-                <div class="row carousel-holder">
-                    @*<div class="col-md-12">*@
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                @{ var i = -1;
-                                    foreach (var item in Model)
-                                    {
-                                        <li data-target="@(++i)" data-slide-to="0" class="@(i==0? "active":"")"></li>
+    @*<div class="col-md-center">*@
+    <div class="col-xs-12">
 
-                                    }
-                                }
+        <div class="row carousel-holder">
+            @*<div class="col-md-12">*@
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @{ var i = -1;
+                        foreach (var item in Model)
+                        {
+                            <li data-target="@(++i)" data-slide-to="0" class="@(i==0? "active":"")"></li>
 
-                            </ol>
-                            <div class="carousel-inner">
-                                @{  var isFirst = true;
-                                    foreach (var item in Model)
-                                    {
-                                        <div class="item @(isFirst ? "active": "")"
-                                             @(isFirst = false)>
-                                            <img class="slide-image  " src="/images/@item.ImageUrl" alt="Image">
-                                        </div>
+                        }
+                    }
 
-                                    }
-                                }
+                </ol>
+                <div class="carousel-inner">
+                    @{  var isFirst = true;
+                        foreach (var item in Model)
+                        {
+                            <div class="item @(isFirst ? "active": "")"
+                                 @(isFirst = false)>
 
-
+                                <img class="slide-image  " src="/images/@item.ImageUrl" alt="Image">
                             </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @*</div>*@
-    @*</div>*@
 
-    <div class="container">
-        <section>
-            @{
-                foreach (var item in Model)
-                {
+                        }
+                    }
+
+
+                </div>
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*</div>*@
+
+<div class="container">
+
+
+    @{
+        foreach (var item in Model)
+        {
+
+
+                <section class="wow fadeIn" data-wow-duration="4s" data-wow-delay="2s">
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
 
@@ -102,18 +109,25 @@
                             </div>
                         </div>
                     </div>
+                </section>
 
-                }
-            }
-        </section>
-    </div>
-@*</div>*@
+
+
+        }
+    }
+
+</div>
+
+
 
 <script src="js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-
-    </>
+<script src="~/Scripts/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+</>
 
 
