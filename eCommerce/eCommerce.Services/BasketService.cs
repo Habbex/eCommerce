@@ -17,15 +17,18 @@ namespace eCommerce.Services
         private IRepositoryBase<Voucher> vouchers;
         private IRepositoryBase<VoucherType> voucherTypes;
         private IRepositoryBase<BasketVoucher> basketVouchers;
+        private IRepositoryBase<BasketItem> basketItems;
 
         public const string BasketSessionName = "eCommerceBasket";
 
-        public BasketService(IRepositoryBase<Basket> baskets, IRepositoryBase<Voucher> vouchers, IRepositoryBase<BasketVoucher> basketVouchers, IRepositoryBase<VoucherType> voucherTypes)
+        public BasketService(IRepositoryBase<Basket> baskets, IRepositoryBase<Voucher> vouchers,
+            IRepositoryBase<BasketVoucher> basketVouchers, IRepositoryBase<VoucherType> voucherTypes, IRepositoryBase<BasketItem> basketItems)
         {
             this.baskets = baskets;
             this.vouchers = vouchers;
             this.basketVouchers = basketVouchers;
             this.voucherTypes = voucherTypes;
+            this.basketItems = basketItems;
         }
 
         private Basket createNewBasket(HttpContextBase httpContext)
@@ -39,7 +42,7 @@ namespace eCommerce.Services
             basket.date = DateTime.Now;
             basket.BasketId = Guid.NewGuid();
 
-            //add and persist in the dabase.
+            //add and persist in the database.
             baskets.Insert(basket);
             baskets.Commit();
 
@@ -87,11 +90,11 @@ namespace eCommerce.Services
             if (cookie != null)
             {
 
-                if(Guid.TryParse(cookie.Value, out basketId))
+                if (Guid.TryParse(cookie.Value, out basketId))
                 {
                     basket = baskets.GetById(basketId);
                 }
-                else{
+                else {
                     basket = createNewBasket(httpContext);
                 }
             }
@@ -111,7 +114,7 @@ namespace eCommerce.Services
             if (voucher != null)
             {
                 VoucherType voucherType = voucherTypes.GetById(voucher.VoucherTypeId);
-                if (voucher !=null)
+                if (voucher != null)
                 {
                     BasketVoucher basketVoucher = new BasketVoucher();
 
@@ -135,33 +138,32 @@ namespace eCommerce.Services
 
         }
 
-        //public void MoneyOff(Voucher voucher, Basket basket, BasketVoucher basketVoucher)
-        //{
-        //    decimal basketTotal = basket.BasketTotal();
-        //    if (voucher.MinSpend < basketTotal )
-        //    {
-        //        basketVoucher.Value = voucher.Value *-1;
-        //        basketVoucher.VoucherCode = voucher.VoucherCode;
-        //        basketVoucher.VoucherDescription = voucher.VoucherDescription;
-        //        basketVoucher.VoucherId = voucher.VoucherId;
-        //        basket.AddBasketVoucher(basketVoucher);
-        //    }
 
-        //}
+        public bool DeleteToBasket(HttpContextBase httpContext, int basketItemId)
+        {
+            bool success = true;
+            basketItems.Delete(basketItemId);
+            basketItems.Commit();
+            return success;
 
+        }
 
-        //public void PercentOff(Voucher voucher, Basket basket, BasketVoucher basketVoucher)
-        //{
-        //    if (voucher.MinSpend > basket.BasketTotal())
-        //    {
-        //        basketVoucher.Value = (voucher.Value * (basket.BasketTotal() / 100)) * -1;
-        //        basketVoucher.VoucherCode = voucher.VoucherCode;
-        //        basketVoucher.VoucherDescription = voucher.VoucherDescription;
-        //        basketVoucher.VoucherId = voucher.VoucherId;
-        //        basket.AddBasketVoucher(basketVoucher);
-        //    }
+        public bool DeteleItem(HttpContextBase httpContext, int basketItemId, int quatity)
+        {
+            bool success = true;
 
+            BasketItem item = basketItems.GetById(basketItemId);
 
-        //}
+            if (item !=null)
+            {
+                item.Quantity = item.Quantity - quatity;
+
+            }
+
+            basketItems.Commit();
+
+            return success;
+        }
+
     }
 }

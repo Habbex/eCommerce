@@ -1428,6 +1428,10 @@ left:50%; top:50%;
   }
 }
 
+.delay{
+    transition-delay: 1s;
+}
+
 table {
   max-width: 100%;
   background-color: transparent;
