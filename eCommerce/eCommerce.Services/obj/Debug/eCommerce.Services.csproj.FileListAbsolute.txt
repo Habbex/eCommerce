@@ -1,0 +1,52 @@
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Services.dll
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Services.pdb
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Contracts.dll
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\eCommerce.DAL.dll
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Model.dll
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\EntityFramework.dll
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Contracts.pdb
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\eCommerce.DAL.pdb
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Model.pdb
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\bin\Debug\EntityFramework.xml
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.csprojResolveAssemblyReference.cache
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.dll
+C:\Users\bretthargreaves\Documents\Visual Studio 2013\Projects\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.pdb
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Services.dll
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Services.pdb
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Contracts.dll
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\eCommerce.DAL.dll
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Model.dll
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\EntityFramework.dll
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Contracts.pdb
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\eCommerce.DAL.pdb
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Model.pdb
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\bin\Debug\EntityFramework.xml
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.csprojResolveAssemblyReference.cache
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.dll
+C:\Users\bretthargreaves\Desktop\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Services.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Services.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Contracts.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\eCommerce.DAL.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Model.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\EntityFramework.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Contracts.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\eCommerce.DAL.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Model.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\bin\Debug\EntityFramework.xml
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.csprojResolveAssemblyReference.cache
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Services.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Services.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Contracts.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\eCommerce.DAL.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Model.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\EntityFramework.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Contracts.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\eCommerce.DAL.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\eCommerce.Model.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\bin\Debug\EntityFramework.xml
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.csprojResolveAssemblyReference.cache
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.dll
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Services\obj\Debug\eCommerce.Services.pdb
