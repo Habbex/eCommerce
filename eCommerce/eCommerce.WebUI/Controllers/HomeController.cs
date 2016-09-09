@@ -19,10 +19,17 @@ namespace eCommerce.WebUI.Controllers
         IRepositoryBase<Voucher> vouchers;
         IRepositoryBase<VoucherType> voucherTypes;
         IRepositoryBase<BasketVoucher> basketVouchers;
+        IRepositoryBase<BasketItem> basketItems;
+
+
 
         BasketService basketService;
 
-        public HomeController(IRepositoryBase<Customer> customers, IRepositoryBase<Product> products, IRepositoryBase<Basket> baskets, IRepositoryBase<Voucher> vouchers, IRepositoryBase<BasketVoucher> basketVouchers, IRepositoryBase<VoucherType> voucherTypes)
+        public HomeController(IRepositoryBase<Customer> customers, IRepositoryBase<Product> products,
+            IRepositoryBase<Basket> baskets, IRepositoryBase<Voucher> vouchers,
+            IRepositoryBase<BasketVoucher> basketVouchers, IRepositoryBase<VoucherType> voucherTypes,
+            IRepositoryBase<BasketItem> basketItems)
+
         {
             this.customers = customers;
             this.products = products;
@@ -30,26 +37,33 @@ namespace eCommerce.WebUI.Controllers
             this.vouchers = vouchers;
             this.basketVouchers = basketVouchers;
             this.voucherTypes = voucherTypes;
+            this.basketItems = basketItems;
 
-            basketService = new BasketService(this.baskets, this.vouchers, this.basketVouchers, this.voucherTypes);
+
+            basketService = new BasketService(this.baskets, this.vouchers,
+                this.basketVouchers, this.voucherTypes, this.basketItems);
         }
         public ActionResult BasketSummary() {
             var model = basketService.GetBasket(this.HttpContext);
-            
+
             return View(model);
         }
-       
-        //public ActionResult ProductPicView()
-        //{
-        //    var model = new ProductPicViewer()
-        //    {
-        //        Images= Dictionary.En
-        //    };
-        //}
+
+
         public ActionResult AddToBasket(int id) {
             basketService.AddToBasket(this.HttpContext, id, 1);//always add one to the basket
 
             return RedirectToAction("BasketSummary");
+        }
+
+        public ActionResult DeleteItem(int id)
+
+        {
+
+            basketService.DeleteItem(this.HttpContext, id, 1);
+
+            return RedirectToAction("BasketSummary");
+
         }
 
         public ActionResult AddBasketVoucher(string voucherCode) {
@@ -58,10 +72,12 @@ namespace eCommerce.WebUI.Controllers
             return RedirectToAction("BasketSummary");
         }
 
+
+
         public ActionResult Index()
         {
             var productList = products.GetAll();
-         
+
             return View(productList);
         }
 

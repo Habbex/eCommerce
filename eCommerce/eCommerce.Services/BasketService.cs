@@ -17,15 +17,22 @@ namespace eCommerce.Services
         private IRepositoryBase<Voucher> vouchers;
         private IRepositoryBase<VoucherType> voucherTypes;
         private IRepositoryBase<BasketVoucher> basketVouchers;
+        private IRepositoryBase<BasketItem> basketItems;
+
 
         public const string BasketSessionName = "eCommerceBasket";
 
-        public BasketService(IRepositoryBase<Basket> baskets, IRepositoryBase<Voucher> vouchers, IRepositoryBase<BasketVoucher> basketVouchers, IRepositoryBase<VoucherType> voucherTypes)
+        public BasketService(IRepositoryBase<Basket> baskets, IRepositoryBase<Voucher> vouchers,
+            IRepositoryBase<BasketVoucher> basketVouchers, IRepositoryBase<VoucherType> voucherTypes,
+            IRepositoryBase<BasketItem> basketItems)
+
         {
             this.baskets = baskets;
             this.vouchers = vouchers;
             this.basketVouchers = basketVouchers;
             this.voucherTypes = voucherTypes;
+            this.basketItems = basketItems;
+
         }
 
         private Basket createNewBasket(HttpContextBase httpContext)
@@ -39,7 +46,7 @@ namespace eCommerce.Services
             basket.date = DateTime.Now;
             basket.BasketId = Guid.NewGuid();
 
-            //add and persist in the dabase.
+            //add and persist in the database.
             baskets.Insert(basket);
             baskets.Commit();
 
@@ -132,6 +139,42 @@ namespace eCommerce.Services
                     baskets.Commit();
                 }
             }
+
+        }
+
+        public bool DeleteToBasket(HttpContextBase httpContext, int basketItemId)
+
+        {
+
+            bool success = true;
+
+            basketItems.Delete(basketItemId);
+
+            basketItems.Commit();
+
+            return success;
+
+        }
+
+        public bool DeleteItem(HttpContextBase httpContext, int basketItemId, int quantity)
+
+        {
+
+            bool success = true;
+
+            BasketItem item = basketItems.GetById(basketItemId);
+
+            if (item != null)
+
+            {
+
+                item.Quantity = item.Quantity - quantity;
+
+            }
+
+            basketItems.Commit();
+
+            return success;
 
         }
 

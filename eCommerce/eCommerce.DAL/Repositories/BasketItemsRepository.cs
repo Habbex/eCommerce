@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using eCommerce.DAL.Data;
 using eCommerce.Model;
+using eCommerce.DAL.Data;
 
 namespace eCommerce.DAL.Repositories
 {
-   public class BasketItemsRepository: RepositoryBase<Basket>
+  public class BasketItemsRepository: RepositoryBase<BasketItem>
     {
         public BasketItemsRepository(DataContext context)
             :base(context)
         {
             if (context== null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentException();
             }
         }
 

@@ -43,8 +43,13 @@ namespace eCommerce.Model
             _basketItems.Add((BasketItem)item);
         }
 
-        public void AddBasketVoucher(IBasketVoucher voucher) { 
+        public void AddBasketVoucher(IBasketVoucher voucher) {
             _basketVouchers.Add((BasketVoucher) voucher);
+        }
+
+        public void DeteleBasketItem(IBasketItem item)
+        {
+            _basketItems.Remove((BasketItem) item);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿@model eCommerce.Model.Basket
 
+
 @{
     ViewBag.Title = "BasketSummary";
 }
@@ -33,7 +34,7 @@
                 @String.Format("{0:c}", item.Product.Price * item.Quantity)
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.BasketItemId })
+                @Html.ActionLink("Delete", "DeleteItem", new { id = item.BasketItemId })
             </td>
         </tr>
     }

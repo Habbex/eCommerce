@@ -8,10 +8,12 @@ namespace eCommerce.Contracts.Model
         
         ICollection<IBasketItem> IBasketItems { get; }
         ICollection<IBasketVoucher> IBasketVouchers { get; }
+     
         DateTime date { get; set; }
 
         void AddBasketItem(IBasketItem item);
         void AddBasketVoucher(IBasketVoucher voucher);
+        void DeteleBasketItem(IBasketItem item);
         decimal BasketTotal();
         decimal BasketItemCount();
     }
