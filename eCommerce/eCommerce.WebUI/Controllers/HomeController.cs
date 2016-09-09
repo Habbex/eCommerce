@@ -53,7 +53,7 @@ namespace eCommerce.WebUI.Controllers
         public ActionResult AddToBasket(int id) {
             basketService.AddToBasket(this.HttpContext, id, 1);//always add one to the basket
 
-            return RedirectToAction("BasketSummary");
+            return RedirectToAction("Index");
         }
 
         public ActionResult DeleteItem(int id)
@@ -61,6 +61,7 @@ namespace eCommerce.WebUI.Controllers
         {
 
             basketService.DeleteItem(this.HttpContext, id, 1);
+            basketService.DeleteToBasket(this.HttpContext, id);
 
             return RedirectToAction("BasketSummary");
 
