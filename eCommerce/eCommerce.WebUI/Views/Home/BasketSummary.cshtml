@@ -67,6 +67,9 @@
             <td>
                 @String.Format("{0:c}", item.Value)
             </td>
+            <td>
+               @Html.ActionLink("Delete", "DeleteVoucherFromBasket", new { id = item.BasketVoucherId })
+            </td>
         </tr>
     }
 

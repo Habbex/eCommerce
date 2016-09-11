@@ -18,13 +18,14 @@ namespace eCommerce.Services
         private IRepositoryBase<VoucherType> voucherTypes;
         private IRepositoryBase<BasketVoucher> basketVouchers;
         private IRepositoryBase<BasketItem> basketItems;
+        private IRepositoryBase<BasketVoucher> BasketVoucherId;
 
 
         public const string BasketSessionName = "eCommerceBasket";
 
         public BasketService(IRepositoryBase<Basket> baskets, IRepositoryBase<Voucher> vouchers,
             IRepositoryBase<BasketVoucher> basketVouchers, IRepositoryBase<VoucherType> voucherTypes,
-            IRepositoryBase<BasketItem> basketItems)
+            IRepositoryBase<BasketItem> basketItems, IRepositoryBase<BasketVoucher> BasketVoucherId)
 
         {
             this.baskets = baskets;
@@ -32,6 +33,7 @@ namespace eCommerce.Services
             this.basketVouchers = basketVouchers;
             this.voucherTypes = voucherTypes;
             this.basketItems = basketItems;
+            this.BasketVoucherId = BasketVoucherId;
 
         }
 
@@ -142,6 +144,7 @@ namespace eCommerce.Services
 
         }
 
+
         public bool DeleteToBasket(HttpContextBase httpContext, int basketItemId)
 
         {
@@ -155,6 +158,16 @@ namespace eCommerce.Services
             return success;
 
         }
+
+        public bool DeleteToVoucherBasket(HttpContextBase httpContext, int BasketVoucherId)
+        {
+            bool success = true;
+            basketVouchers.Delete(BasketVoucherId);
+            basketVouchers.Commit();
+
+            return success;
+            
+        } 
 
         public bool DeleteItem(HttpContextBase httpContext, int basketItemId, int quantity)
 
