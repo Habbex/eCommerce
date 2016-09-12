@@ -83,33 +83,33 @@
         {
 
 
-                <section class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
+            <section class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
 
-                            <img class="img-rounded" src="/images/@item.ImageUrl" alt="Image" style="height:70%;width:70%" />
+                        <img class="img-rounded" src="/images/@item.ImageUrl" alt="Image" style="height:70%;width:70%" />
 
-                            <div class="caption">
-                                <h4 class="pull-right">@String.Format("{0:c}", item.Price)</h4>
-                                <h4>
-                                    <a href="#">@Html.ActionLink(item.Description ?? "Empty Entry", "Details", new { id = item.ProductId })</a>
+                        <div class="caption">
+                            <h4 class="pull-right">@String.Format("{0:c}", item.Price)</h4>
+                            <h4>
+                                <a href="#">@Html.ActionLink(item.Description ?? "Empty Entry", "Details", new { id = item.ProductId })</a>
 
-                                </h4>
-                                <p></p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">12 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
+                            </h4>
+                            <p></p>
+                        </div>
+                        <div class="ratings">
+                            <p class="pull-right">12 reviews</p>
+                            <p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </p>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
 
 
@@ -117,6 +117,7 @@
     }
 
 </div>
+
 
 
 

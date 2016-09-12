@@ -108,5 +108,11 @@ namespace eCommerce.WebUI.Controllers
 
             return View();
         }
+
+        public ActionResult Portfolio()
+        {
+            ViewBag.Message = "Portfolio";
+            return View();
+        }
     }
 }
