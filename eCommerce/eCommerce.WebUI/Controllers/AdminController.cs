@@ -17,7 +17,8 @@ namespace eCommerce.WebUI.Controllers
         IRepositoryBase<VoucherType> voucherTypes;
         IRepositoryBase<Voucher> vouchers;
 
-        public AdminController(IRepositoryBase<Customer> customers, IRepositoryBase<Product> products,IRepositoryBase<VoucherType> voucherTypes, IRepositoryBase<Voucher> vouchers)
+
+        public AdminController(IRepositoryBase<Customer> customers, IRepositoryBase<Product> products, IRepositoryBase<VoucherType> voucherTypes, IRepositoryBase<Voucher> vouchers)
         {
             this.customers = customers;
             this.products = products;
@@ -31,7 +32,15 @@ namespace eCommerce.WebUI.Controllers
             return View();
         }
 
-        public ActionResult ProductList() {
+        public ActionResult CustomerList()
+        {
+            var model = customers.GetAll();
+
+            return View(model);
+        }
+
+        public ActionResult ProductList()
+        {
             var model = products.GetAll();
 
             return View(model);
@@ -44,7 +53,8 @@ namespace eCommerce.WebUI.Controllers
             return View(product);
         }
 
-        public ActionResult CreateProduct() {
+        public ActionResult CreateProduct()
+        {
             var model = new Product();
 
             return View(model);
@@ -69,8 +79,8 @@ namespace eCommerce.WebUI.Controllers
         [HttpPost]
         public ActionResult CreateVoucher(Voucher voucher)
         {
-            
-            
+
+
             vouchers.Insert(voucher);
             vouchers.Commit();
 
@@ -94,7 +104,7 @@ namespace eCommerce.WebUI.Controllers
             return RedirectToAction("VoucherList");
         }
 
-        
+
         public ActionResult DeleteVoucher(int id)
         {
 
@@ -106,13 +116,15 @@ namespace eCommerce.WebUI.Controllers
 
 
 
-        public ActionResult VoucherTypeList() {
+        public ActionResult VoucherTypeList()
+        {
             var model = voucherTypes.GetAll();
 
             return View(model);
         }
 
-        public ActionResult CreateVoucherType() {
+        public ActionResult CreateVoucherType()
+        {
             var model = new VoucherType();
 
             return View(model);
@@ -145,7 +157,7 @@ namespace eCommerce.WebUI.Controllers
             return RedirectToAction("VoucherTypeList");
         }
 
-       
+
         public ActionResult DeleteVoucherType(int id)
         {
             VoucherType voucherType = voucherTypes.GetById(id);
@@ -181,8 +193,8 @@ namespace eCommerce.WebUI.Controllers
             return RedirectToAction("ProductList");
         }
 
-        
-        public ActionResult DeleteProduct( int id) // Get 
+
+        public ActionResult DeleteProduct(int id) // Get
         {
             Product product = products.GetById(id);
             products.Delete(id);
@@ -190,10 +202,78 @@ namespace eCommerce.WebUI.Controllers
             return RedirectToAction("ProductList");
 
         }
-        
-       
 
 
-        
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(Customer customer)
+        {
+
+
+
+
+            customers.Insert(customer);
+            customers.Commit();
+
+
+
+
+
+
+            ViewBag.Message = customer.CustomerF_Name + " " + customer.CustomerL_Name + "Successfully registered";
+            return RedirectToAction("Index");
+        }
+
+
+        // login get
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        // login set
+        [HttpPost]
+        public ActionResult Login(Customer customer)
+        {
+            var usr = customers.GetAll().Single(u => u.UserName == customer.UserName && u.Password == customer.Password);
+
+
+            if (usr != null)
+            {
+
+                    Session["CustomerId"] = customer.CustomerId.ToString();
+                    Session["UserName"] = customer.UserName.ToString();
+                    return RedirectToAction("Index");
+
+            }
+
+            else
+            {
+                ModelState.AddModelError("", "User Name or Password is wrong. ");
+            }
+
+            return View();
+        }
+
+        public ActionResult LoggedIn()
+        {
+            if (Session["CustomerId"] != null)
+            {
+                return View();
+
+            }
+
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
     }
+
+
+
 }

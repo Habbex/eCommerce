@@ -38,6 +38,7 @@ namespace eCommerce.WebUI.Controllers
             this.basketVouchers = basketVouchers;
             this.voucherTypes = voucherTypes;
             this.basketItems = basketItems;
+            this.BasketVoucherId = BasketVoucherId; //<-
 
 
             basketService = new BasketService(this.baskets, this.vouchers,
@@ -114,5 +115,7 @@ namespace eCommerce.WebUI.Controllers
             ViewBag.Message = "Portfolio";
             return View();
         }
+
+
     }
 }

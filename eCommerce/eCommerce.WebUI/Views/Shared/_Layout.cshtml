@@ -29,7 +29,10 @@
                     <li>@Html.ActionLink("Basket", "BasketSummary", "Home")</li>
 
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Register", "Register", "Admin")</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Admin")</li>
+                </ul>
             </div>
         </div>
     </div>
