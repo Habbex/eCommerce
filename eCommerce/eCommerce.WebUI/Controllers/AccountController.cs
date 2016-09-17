@@ -11,22 +11,26 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using eCommerce.WebUI.Models;
+using eCommerce.Contracts.Repositories;
+using eCommerce.Model;
 
 namespace eCommerce.WebUI.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        IRepositoryBase<Customer> customers;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountController(IRepositoryBase<Customer> customers)
         {
+            this.customers = customers;
         }
 
-        public AccountController(ApplicationUserManager userManager)
-        {
-            UserManager = userManager;
-        }
+        //public AccountController(ApplicationUserManager Customer)
+        //{
+        //    Customer = customers;
+        //}
 
         public ApplicationUserManager UserManager {
             get
@@ -42,9 +46,9 @@ namespace eCommerce.WebUI.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
-            ViewBag.ReturnUrl = returnUrl;
+
             return View();
         }
 
@@ -53,24 +57,25 @@ namespace eCommerce.WebUI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(Customer customer)
         {
-            if (ModelState.IsValid)
-            {
-                var user = await UserManager.FindAsync(model.Email, model.Password);
-                if (user != null)
+
+                var usr = customers.GetAll().Single(u => u.UserName == customer.UserName && u.Password == customer.Password);
+                if (usr != null)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+
+                    Session["CustomerId"] = customer.CustomerId.ToString();
+                    Session["UserName"] = customer.UserName.ToString();
+                    return RedirectToAction("Index","Admin");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Invalid username or password.");
                 }
-            }
+
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return View();
         }
 
         //
@@ -86,32 +91,27 @@ namespace eCommerce.WebUI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public ActionResult Register(Customer customer)
         {
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInAsync(user, isPersistent: false);
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    AddErrors(result);
-                }
-            }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+
+
+            customers.Insert(customer);
+            customers.Commit();
+
+
+
+
+
+
+            ViewBag.Message = customer.CustomerF_Name + " " + customer.CustomerL_Name + "Successfully registered";
+            return RedirectToAction("Index", "Home");
+
+
+
+
         }
 
         //
@@ -119,7 +119,7 @@ namespace eCommerce.WebUI.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId == null || code == null) 
+            if (userId == null || code == null)
             {
                 return View("Error");
             }
@@ -163,7 +163,7 @@ namespace eCommerce.WebUI.Controllers
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
@@ -179,13 +179,13 @@ namespace eCommerce.WebUI.Controllers
         {
             return View();
         }
-	
+
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            if (code == null) 
+            if (code == null)
             {
                 return View("Error");
             }
@@ -413,13 +413,13 @@ namespace eCommerce.WebUI.Controllers
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);
-                        
+
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // SendEmail(user.Email, callbackUrl, "Confirm your account", "Please confirm your account by clicking this link");
-                        
+
                         return RedirectToLocal(returnUrl);
                     }
                 }

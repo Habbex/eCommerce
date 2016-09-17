@@ -308,8 +308,6 @@
     <Content Include="Scripts\jquery-3.1.0.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Portfolio.cshtml" />
-    <Content Include="Views\Admin\Register.cshtml" />
-    <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\CustomerList.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -203,75 +203,75 @@ namespace eCommerce.WebUI.Controllers
 
         }
 
+        // fel ställe flyttad.
+        //public ActionResult Register()
+        //{
+        //    return View();
+        //}
 
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register(Customer customer)
-        {
-
-
-
-
-            customers.Insert(customer);
-            customers.Commit();
+        //[HttpPost]
+        //public ActionResult Register(Customer customer)
+        //{
 
 
 
 
+        //    customers.Insert(customer);
+        //    customers.Commit();
 
 
-            ViewBag.Message = customer.CustomerF_Name + " " + customer.CustomerL_Name + "Successfully registered";
-            return RedirectToAction("Index");
-        }
 
 
-        // login get
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        // login set
-        [HttpPost]
-        public ActionResult Login(Customer customer)
-        {
-            var usr = customers.GetAll().Single(u => u.UserName == customer.UserName && u.Password == customer.Password);
 
 
-            if (usr != null)
-            {
+        //    ViewBag.Message = customer.CustomerF_Name + " " + customer.CustomerL_Name + "Successfully registered";
+        //    return RedirectToAction("Index");
+        //}
 
-                    Session["CustomerId"] = customer.CustomerId.ToString();
-                    Session["UserName"] = customer.UserName.ToString();
-                    return RedirectToAction("Index");
 
-            }
+        //// login get
+        //public ActionResult Login()
+        //{
+        //    return View();
+        //}
 
-            else
-            {
-                ModelState.AddModelError("", "User Name or Password is wrong. ");
-            }
+        //// login set
+        //[HttpPost]
+        //public ActionResult Login(Customer customer)
+        //{
+        //    var usr = customers.GetAll().Single(u => u.UserName == customer.UserName && u.Password == customer.Password);
 
-            return View();
-        }
 
-        public ActionResult LoggedIn()
-        {
-            if (Session["CustomerId"] != null)
-            {
-                return View();
+        //    if (usr != null)
+        //    {
 
-            }
+        //            Session["CustomerId"] = customer.CustomerId.ToString();
+        //            Session["UserName"] = customer.UserName.ToString();
+        //            return RedirectToAction("Index");
 
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
+        //    }
+
+        //    else
+        //    {
+        //        ModelState.AddModelError("", "User Name or Password is wrong. ");
+        //    }
+
+        //    return View();
+        //}
+
+        //public ActionResult LoggedIn()
+        //{
+        //    if (Session["CustomerId"] != null)
+        //    {
+        //        return View();
+
+        //    }
+
+        //    else
+        //    {
+        //        return RedirectToAction("Login");
+        //    }
+        //}
     }
 
 

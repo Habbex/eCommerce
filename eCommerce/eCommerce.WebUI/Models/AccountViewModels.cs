@@ -1,5 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+/// <summary>
+/// /////behövs ej!! har redan igenom db o entity!
+/// 
+/// </summary>
 namespace eCommerce.WebUI.Models
 {
     public class ExternalLoginConfirmationViewModel
