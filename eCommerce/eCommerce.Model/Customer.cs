@@ -44,4 +44,7 @@ namespace eCommerce.Model
         [Required(ErrorMessage = "Please enter your PostCode. ")]
         public string PostCode { get; set; }
     }
+
+
+
 }
