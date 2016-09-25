@@ -110,6 +110,7 @@ namespace eCommerce.WebUI.Controllers
             return View();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         public ActionResult Portfolio()
         {
@@ -118,6 +119,8 @@ namespace eCommerce.WebUI.Controllers
         }
 
 
+=======
+>>>>>>> parent of fd6f70f... Added sketchfab embad link to my 3d model, good for the portfolio later on. Also renamed a page to portfolio to later on become the main page of my website.
 =======
 >>>>>>> parent of fd6f70f... Added sketchfab embad link to my 3d model, good for the portfolio later on. Also renamed a page to portfolio to later on become the main page of my website.
     }

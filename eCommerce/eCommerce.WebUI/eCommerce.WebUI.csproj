@@ -316,9 +316,12 @@
     <Content Include="Scripts\jquery-3.1.0.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Content Include="Views\Home\Portfolio.cshtml" />
     <Content Include="Views\Admin\CustomerList.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
+=======
+>>>>>>> parent of fd6f70f... Added sketchfab embad link to my 3d model, good for the portfolio later on. Also renamed a page to portfolio to later on become the main page of my website.
 =======
 >>>>>>> parent of fd6f70f... Added sketchfab embad link to my 3d model, good for the portfolio later on. Also renamed a page to portfolio to later on become the main page of my website.
   </ItemGroup>
