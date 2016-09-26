@@ -70,8 +70,5 @@ F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\bin\Debug\
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\bin\Debug\EntityFramework.xml
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\bin\Debug\EntityFramework.SqlServer.xml
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.csprojResolveAssemblyReference.cache
-F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.Migrations.Initial.resources
-F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.Migrations.Currency.resources
-F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.csproj.GenerateResource.Cache
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.dll
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.pdb
