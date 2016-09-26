@@ -11,6 +11,5 @@ C:\Users\bretthargreaves\Desktop\eCommerce\Playground\obj\Debug\Playground.pdb
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\Playground\bin\Debug\Playground.exe.config
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\Playground\bin\Debug\Playground.exe
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\Playground\bin\Debug\Playground.pdb
-F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\Playground\obj\Debug\Playground.csprojResolveAssemblyReference.cache
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\Playground\obj\Debug\Playground.exe
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\Playground\obj\Debug\Playground.pdb

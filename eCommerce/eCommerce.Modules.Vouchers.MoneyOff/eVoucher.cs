@@ -20,7 +20,7 @@ namespace eCommerce.Modules.Vouchers.MoneyOff
                 basketVoucher.VoucherDescription = voucher.VoucherDescription;
                 basketVoucher.VoucherId = voucher.VoucherId;
                 basket.AddBasketVoucher(basketVoucher);
-            }  
+            }
         }
     }
 }
