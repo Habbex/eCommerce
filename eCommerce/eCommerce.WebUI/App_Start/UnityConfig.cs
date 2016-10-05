@@ -4,6 +4,7 @@ using Microsoft.Practices.Unity.Configuration;
 using eCommerce.DAL.Repositories;
 using eCommerce.Model;
 using eCommerce.Contracts.Repositories;
+using eCommerce.WebUI.Controllers;
 
 namespace eCommerce.WebUI.App_Start
 {
@@ -47,6 +48,9 @@ namespace eCommerce.WebUI.App_Start
             container.RegisterType<IRepositoryBase<VoucherType>, VoucherTypeRepository>();
             container.RegisterType<IRepositoryBase<BasketVoucher>, BasketVoucherRepository>();
             container.RegisterType<IRepositoryBase<BasketItem>, BasketItemsRepository>();
+            container.RegisterType<AccountController>(new InjectionConstructor());
+
+
         }
     }
 }

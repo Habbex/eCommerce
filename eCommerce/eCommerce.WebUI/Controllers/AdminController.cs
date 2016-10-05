@@ -7,10 +7,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using System.Data.Entity;
+using eCommerce.WebUI.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace eCommerce.WebUI.Controllers
-{
-    public class AdminController : Controller
+{[Authorize]
+    public class AdminController : ApplicationBaseController
     {
         IRepositoryBase<Customer> customers;
         IRepositoryBase<Product> products;
@@ -25,13 +28,44 @@ namespace eCommerce.WebUI.Controllers
             this.voucherTypes = voucherTypes;
         }
 
-        // GET: Admin
+        //// GET: Admin
         public ActionResult Index()
         {
+
             return View();
         }
 
-        public ActionResult ProductList() {
+        //// boolean om det är admin som är inloggad
+
+        //public Boolean isAdminUser()
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        var user = User.Identity;
+        //        ApplicationDbContext context = new ApplicationDbContext();
+
+        //        var UserMangaer = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+
+        //        var s = UserMangaer.GetRoles(user.GetUserId());
+
+        //        if (s[0].ToString()=="Admin")
+        //        {
+        //            return true;
+
+        //        }
+
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return false;
+        //}
+
+        public ActionResult ProductList()
+        {
             var model = products.GetAll();
 
             return View(model);
@@ -69,8 +103,8 @@ namespace eCommerce.WebUI.Controllers
         [HttpPost]
         public ActionResult CreateVoucher(Voucher voucher)
         {
-            
-            
+
+
             vouchers.Insert(voucher);
             vouchers.Commit();
 
@@ -94,7 +128,7 @@ namespace eCommerce.WebUI.Controllers
             return RedirectToAction("VoucherList");
         }
 
-        
+
         public ActionResult DeleteVoucher(int id)
         {
 
@@ -145,7 +179,7 @@ namespace eCommerce.WebUI.Controllers
             return RedirectToAction("VoucherTypeList");
         }
 
-       
+
         public ActionResult DeleteVoucherType(int id)
         {
             VoucherType voucherType = voucherTypes.GetById(id);
@@ -181,8 +215,8 @@ namespace eCommerce.WebUI.Controllers
             return RedirectToAction("ProductList");
         }
 
-        
-        public ActionResult DeleteProduct( int id) // Get 
+
+        public ActionResult DeleteProduct( int id) // Get
         {
             Product product = products.GetById(id);
             products.Delete(id);
@@ -190,10 +224,10 @@ namespace eCommerce.WebUI.Controllers
             return RedirectToAction("ProductList");
 
         }
-        
-       
 
 
-        
+
+
+
     }
 }

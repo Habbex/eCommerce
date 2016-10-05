@@ -48,10 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ApplicationUser.cs" />
     <Compile Include="Data\DataContext.cs" />
-    <Compile Include="Migrations\201609261515103_Init_back_from_doom!.cs" />
-    <Compile Include="Migrations\201609261515103_Init_back_from_doom!.Designer.cs">
-      <DependentUpon>201609261515103_Init_back_from_doom!.cs</DependentUpon>
+    <Compile Include="Migrations\201610040034239_inti.cs" />
+    <Compile Include="Migrations\201610040034239_inti.Designer.cs">
+      <DependentUpon>201610040034239_inti.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,8 +82,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609261515103_Init_back_from_doom!.resx">
-      <DependentUpon>201609261515103_Init_back_from_doom!.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610040034239_inti.resx">
+      <DependentUpon>201610040034239_inti.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

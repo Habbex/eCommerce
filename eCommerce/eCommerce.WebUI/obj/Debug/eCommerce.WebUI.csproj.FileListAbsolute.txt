@@ -306,3 +306,7 @@ F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\Syst
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.csprojResolveAssemblyReference.cache
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.dll
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.Migrations.FullName.resources
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.csproj.GenerateResource.Cache
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.Migrations.RolesAndUsers.resources
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.Migrations.UserName.resources

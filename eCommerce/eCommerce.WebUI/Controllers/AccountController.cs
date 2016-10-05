@@ -15,13 +15,15 @@ using eCommerce.WebUI.Models;
 namespace eCommerce.WebUI.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : ApplicationBaseController
     {
         private ApplicationUserManager _userManager;
+
 
         public AccountController()
         {
         }
+
 
         public AccountController(ApplicationUserManager userManager)
         {
@@ -69,6 +71,7 @@ namespace eCommerce.WebUI.Controllers
                 }
             }
 
+
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -78,6 +81,7 @@ namespace eCommerce.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+
             return View();
         }
 
@@ -90,7 +94,8 @@ namespace eCommerce.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email,
+                FirstName= model.FirstName, LastName= model.LastName};
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -102,12 +107,18 @@ namespace eCommerce.WebUI.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+                    // här lägg rollerna in
+
                     return RedirectToAction("Index", "Home");
                 }
+
+
                 else
                 {
                     AddErrors(result);
                 }
+
+
             }
 
             // If we got this far, something failed, redisplay form
@@ -119,7 +130,7 @@ namespace eCommerce.WebUI.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId == null || code == null) 
+            if (userId == null || code == null)
             {
                 return View("Error");
             }
@@ -163,7 +174,7 @@ namespace eCommerce.WebUI.Controllers
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
@@ -179,13 +190,13 @@ namespace eCommerce.WebUI.Controllers
         {
             return View();
         }
-	
+
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            if (code == null) 
+            if (code == null)
             {
                 return View("Error");
             }
@@ -413,13 +424,13 @@ namespace eCommerce.WebUI.Controllers
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);
-                        
+
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // SendEmail(user.Email, callbackUrl, "Confirm your account", "Please confirm your account by clicking this link");
-                        
+
                         return RedirectToLocal(returnUrl);
                     }
                 }

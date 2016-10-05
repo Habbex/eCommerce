@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace eCommerce.WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ApplicationBaseController
     {
         IRepositoryBase<Customer> customers;
         IRepositoryBase<Product> products;

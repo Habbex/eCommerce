@@ -7,13 +7,13 @@ namespace eCommerce.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Init_back_from_doom : IMigrationMetadata
+    public sealed partial class inti : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Init_back_from_doom));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(inti));
         
         string IMigrationMetadata.Id
         {
-            get { return "201609261515103_Init_back_from_doom!"; }
+            get { return "201610040034239_inti"; }
         }
         
         string IMigrationMetadata.Source

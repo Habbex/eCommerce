@@ -17,3 +17,4 @@ F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Contracts\bin\
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Contracts\bin\Debug\eCommerce.Contracts.pdb
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Contracts\obj\Debug\eCommerce.Contracts.dll
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Contracts\obj\Debug\eCommerce.Contracts.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.Contracts\obj\Debug\eCommerce.Contracts.csprojResolveAssemblyReference.cache
