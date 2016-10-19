@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ApplicationUser.cs" />
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Migrations\201610040034239_inti.cs" />
     <Compile Include="Migrations\201610040034239_inti.Designer.cs">

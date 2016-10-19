@@ -4,6 +4,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using eCommerce.WebUI.Models;
+using Microsoft.Owin.Security.DataProtection;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace eCommerce.WebUI
 {
@@ -14,9 +18,66 @@ namespace eCommerce.WebUI
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+            //var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+            // Configure validation logic for usernames
+            this.UserValidator = new UserValidator<ApplicationUser>(this)
+            {
+                AllowOnlyAlphanumericUserNames = false,
+                RequireUniqueEmail = true
+            };
+            // Configure validation logic for passwords
+            this.PasswordValidator = new PasswordValidator
+            {
+                RequiredLength = 6,
+                RequireNonLetterOrDigit = true,
+                RequireDigit = true,
+                RequireLowercase = true,
+                RequireUppercase = true,
+            };
+            // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
+            // You can write your own provider and plug in here.
+            this.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<ApplicationUser>
+            {
+                MessageFormat = "Your security code is: {0}"
+            });
+            this.RegisterTwoFactorProvider("EmailCode", new EmailTokenProvider<ApplicationUser>
+            {
+                Subject = "Security Code",
+                BodyFormat = "Your security code is: {0}"
+            });
+            this.EmailService = new EmailService();
+            this.SmsService = new SmsService();
+            var dataProtectionProvider = Startup.DataProtectionProvider;
+            if (dataProtectionProvider != null)
+            {
+                //manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                IDataProtector dataProtector = dataProtectionProvider.Create("ASP.NET Identity");
+                this.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtector);
+            }
+            //return manager;
+
+
+            
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public IQueryable<ApplicationUser> GetUsersInRole(ApplicationDbContext context, string roleName)
+        {
+            if (context !=null && roleName !=null)
+            {
+                var roles = context.Roles.Where(r => r.Name == roleName);
+                if (roles.Any())
+                {
+                    var roleId = roles.First().Id;
+                    return from user in context.Users
+                           where user.Roles.Any(r => r.RoleId == roleId)
+                           select user;
+                }
+            }
+
+            return null;
+        }
+
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames

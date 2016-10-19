@@ -9,41 +9,48 @@ using eCommerce.WebUI.Models;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
-
-
+using System.Data.Entity;
+using PagedList;
+using System.Threading.Tasks;
 
 namespace eCommerce.WebUI.Controllers
 {
     public class RolesController : Controller
     {
-        ApplicationDbContext context = new ApplicationDbContext();
 
-        //private ApplicationUserManager _userManager;
+        //ApplicationDbContext context = new ApplicationDbContext();
+        private ApplicationDbContext context;
+        private ApplicationUserManager _userManager;
+
+        public RolesController(ApplicationDbContext context, ApplicationUserManager _userManager)
+        {
+            //var userList = new List<ApplicationUser>();
+            this.context = context;
+            this._userManager = _userManager;
+        }
 
 
-        //public RolesController(ApplicationUserManager userManager)
-        //{
-        //    UserManager = userManager;
-        //}
 
-        //public ApplicationUserManager UserManager
-        //{
-        //    get
-        //    {
-        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-        //    }
-        //    private set
-        //    {
-        //        _userManager = value;
-        //    }
-        //}
-
-        // GET: /Roles/
+        // GET: /Roles
         public ActionResult Index()
         {
+
             var roles = context.Roles.ToList();
             return View(roles);
+
+            //var rolelist = context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
+            //  new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            //ViewBag.Roles = rolelist;
+
+            //var userlist = context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
+            //  new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            //ViewBag.Users = userlist;
+
+            //return View();
+
         }
+
+
 
         //
         // GET: /Roles/Create
@@ -118,20 +125,30 @@ namespace eCommerce.WebUI.Controllers
             return View();
         }
 
+
+
+
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RoleAddToUser(string UserName, string RoleName)
         {
 
             ApplicationUser user = context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var idResult = um.AddToRole(user.Id, RoleName);
+            //var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var idResult = _userManager.AddToRole(user.Id, RoleName);
 
             ViewBag.ResultMessage = "Role created successfully !";
 
             // prepopulat roles for the view dropdown
             var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = list;
+
+            var userlist = context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
+             new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            ViewBag.Users = userlist;
 
             return View("ManageUserRoles");
         }
@@ -144,16 +161,48 @@ namespace eCommerce.WebUI.Controllers
             {
                 ApplicationUser user = context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
 
-                var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-                ViewBag.RolesForThisUser = um.GetRoles(user.Id);
+                //var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                ViewBag.RolesForThisUser = _userManager.GetRoles(user.Id);
 
                 // prepopulat roles for the view dropdown
                 var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
                 ViewBag.Roles = list;
+
+             //   var userlist = context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
+             //new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+             //   ViewBag.Users = userlist;
+
+
             }
 
             return View("ManageUserRoles");
         }
+
+        //public static IQueryable<User> GetUserList()
+        //{
+        //    //var userRole = new List<UserListviewModel>();
+        //    //var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
+        //    //foreach (var user in um.Users)
+        //    //{
+        //    //    var r = new UserListviewModel
+        //    //    {
+        //    //        UserName = user.UserName
+        //    //    };
+
+        //    //    userRole.Add(r);
+        //    //}
+        //    //foreach (var user in userRole)
+        //    //{
+        //    //    user.RoleNames = um.GetRoles(um.Users.First(s => s.UserName == user.UserName).Id);
+        //    //}
+
+        //    //return View(userRole);
+
+        //    //var roles= new context
+
+
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -161,10 +210,10 @@ namespace eCommerce.WebUI.Controllers
         {
 
             ApplicationUser user = context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            if (um.IsInRole(user.Id, RoleName))
+            //var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            if (_userManager.IsInRole(user.Id, RoleName))
             {
-              um.RemoveFromRole(user.Id, RoleName);
+                _userManager.RemoveFromRole(user.Id, RoleName);
                 ViewBag.ResultMessage = "Role removed from this user successfully !";
             }
             else
@@ -174,6 +223,10 @@ namespace eCommerce.WebUI.Controllers
             // prepopulat roles for the view dropdown
             var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = list;
+
+            var userlist = context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
+             new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            ViewBag.Users = userlist;
 
             return View("ManageUserRoles");
         }

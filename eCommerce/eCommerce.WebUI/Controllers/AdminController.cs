@@ -35,35 +35,7 @@ namespace eCommerce.WebUI.Controllers
             return View();
         }
 
-        //// boolean om det är admin som är inloggad
-
-        //public Boolean isAdminUser()
-        //{
-        //    if (User.Identity.IsAuthenticated)
-        //    {
-        //        var user = User.Identity;
-        //        ApplicationDbContext context = new ApplicationDbContext();
-
-        //        var UserMangaer = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-
-
-        //        var s = UserMangaer.GetRoles(user.GetUserId());
-
-        //        if (s[0].ToString()=="Admin")
-        //        {
-        //            return true;
-
-        //        }
-
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-
-        //    return false;
-        //}
-
+      
         public ActionResult ProductList()
         {
             var model = products.GetAll();

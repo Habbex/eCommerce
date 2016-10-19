@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace eCommerce.WebUI.Models
 {
@@ -58,11 +59,7 @@ namespace eCommerce.WebUI.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
-
-
-
-
+               
 
         [Required]
         [DataType(DataType.Text)]
@@ -114,4 +111,7 @@ namespace eCommerce.WebUI.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+  
+
 }

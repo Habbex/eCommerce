@@ -28,8 +28,8 @@
                     <li>@Html.ActionLink("Basket", "BasketSummary", "Home")</li>
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Admin User", "Index", "Roles")</li>
-                        <li>@Html.ActionLink("Admin Product", "Index", "Admin")</li>
+                        @*<li>@Html.ActionLink("Admin User", "Index", "Roles")</li>*@
+                        <li>@Html.ActionLink("Admin Control Panel", "Index", "Admin")</li>
                     }
 
 

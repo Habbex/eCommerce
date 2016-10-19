@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<eCommerce.WebUI.Models.UserListviewModel>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "ManageUserRoles";
 }
@@ -14,43 +15,129 @@
     <p>
         Username : @Html.TextBox("UserName")
         Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+
     </p>
 
     <input type="submit" value="Save" />
+
 }
-<hr />
-<h3>Get Roles for a User</h3>
-@using (Html.BeginForm("GetRoles", "Roles"))
+@*@foreach (var user in Model.ToList())
 {
-    @Html.AntiForgeryToken()
-    <p>
-        Username : @Html.TextBox("UserName")
-        <input type="submit" value="Get Roles for this User" />
-    </p>
-}
-@if (ViewBag.RolesForThisUser != null)
+    <div> @user.UserName -- </div>
+    foreach (var role in user.RoleNames)
+    {
+        <div> @role </div>
+    }
+    <br />
+}*@
+
+
+@*<h2> List of users </h2>
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model=> model.User)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roles)
+        </th>
+    </tr>*@
+@*@foreach (var item in Model)
 {
-    <div style="background-color:yellow;">
-        <h3>Roles for this user </h3>
-        <ol>
-            @foreach (string s in ViewBag.RolesForThisUser)
-            {
-                <li>@s</li>
-            }
-        </ol>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Roles)
+        </td>
+    </tr>
+}*@
+
+
+
+@*</table>*@
+@*<br/>
+@using (Html.BeginForm("GetUsers", "Roles", FormMethod.Get))
+{
+    <div class="form-group">
+        Search:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
+
+        <input type="submit" value="Search" />
     </div>
 }
-<hr />
-<h3>Delete A User from a Role</h3>
-@using (Html.BeginForm("DeleteRoleForUser", "Roles"))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<br />
 
-    <p>
-        Username : @Html.TextBox("UserName")
-        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
-    </p>
+<table class="table">
+    <tr>
+        <th>
+            Email
+        </th>
 
-    <input type="submit" value="Delete this user from Role" />
-}
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+
+
+        </tr>
+    }
+
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model,
+    page => Url.Action("Index",
+    new
+    {
+        page,
+        searchStringUserNameOrEmail = ViewBag.searchStringUserNameOrEmail,
+        currentFilter = ViewBag.CurrentFilter
+    }))
+<hr />*@
+
+
+
+        <hr />
+        <h3>Get Roles for a User</h3>
+        @using (Html.BeginForm("GetRoles", "Roles"))
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                Username : @Html.TextBox("UserName")
+                <input type="submit" value="Get Roles for this User" />
+            </p>
+        }
+        @if (ViewBag.RolesForThisUser != null)
+        {
+            <div style="background-color:yellow;">
+                <h3>Roles for this user </h3>
+                <ol>
+                    @foreach (string s in ViewBag.RolesForThisUser)
+                    {
+                        <li>@s</li>
+                    }
+                </ol>
+            </div>
+        }
+        <hr />
+        <h3>Delete A User from a Role</h3>
+        @using (Html.BeginForm("DeleteRoleForUser", "Roles"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <p>
+                Username : @Html.TextBox("UserName")
+                Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+            </p>
+
+            <input type="submit" value="Delete this user from Role" />
+        }

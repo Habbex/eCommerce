@@ -5,6 +5,9 @@ using eCommerce.DAL.Repositories;
 using eCommerce.Model;
 using eCommerce.Contracts.Repositories;
 using eCommerce.WebUI.Controllers;
+using eCommerce.WebUI.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace eCommerce.WebUI.App_Start
 {
@@ -48,7 +51,10 @@ namespace eCommerce.WebUI.App_Start
             container.RegisterType<IRepositoryBase<VoucherType>, VoucherTypeRepository>();
             container.RegisterType<IRepositoryBase<BasketVoucher>, BasketVoucherRepository>();
             container.RegisterType<IRepositoryBase<BasketItem>, BasketItemsRepository>();
-            container.RegisterType<AccountController>(new InjectionConstructor());
+            //container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<ApplicationDbContext>();
+            container.RegisterType<ApplicationUserManager>();
+            container.RegisterType <IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new InjectionConstructor(typeof(ApplicationDbContext)));
 
 
         }
