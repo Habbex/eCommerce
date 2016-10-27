@@ -15,7 +15,7 @@ using eCommerce.WebUI.Models;
 namespace eCommerce.WebUI.Controllers
 {
     [Authorize]
-    public class AccountController : ApplicationBaseController
+    public class AccountController : Controller
     {
         private  ApplicationUserManager _userManager;
 

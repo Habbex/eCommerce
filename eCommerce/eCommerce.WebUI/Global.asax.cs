@@ -21,21 +21,21 @@ namespace eCommerce.WebUI
 
             AreaRegistration.RegisterAllAreas();
 
-            var context = new ApplicationDbContext();
-            if (!context.Users.Any(user => user.UserName == "ihabokal@hotmail.com"))
-            {
-                var userStore = new UserStore<ApplicationUser>(context);
-                var userManager = new UserManager<ApplicationUser>(userStore);
-                var applicationUser = new ApplicationUser() { UserName = "ihabokal@hotmail.com" };
-                userManager.Create(applicationUser, "Habbe89-");
+            //var context = new ApplicationDbContext();
+            //if (!context.Users.Any(user => user.UserName == "LÖL@hotmail.com"))
+            //{
+            //    var userStore = new UserStore<ApplicationUser>(context);
+            //    var userManager = new UserManager<ApplicationUser>(userStore);
+            //    var applicationUser = new ApplicationUser() { UserName = "LÖL@hotmail.com" };
+            //    userManager.Create(applicationUser, "LÖL");
 
-                var roleStore = new RoleStore<IdentityRole>(context);
-                var roleManager = new RoleManager<IdentityRole>(roleStore);
-                roleManager.Create(new IdentityRole("Admin"));
+            //    var roleStore = new RoleStore<IdentityRole>(context);
+            //    var roleManager = new RoleManager<IdentityRole>(roleStore);
+            //    roleManager.Create(new IdentityRole("Admin"));
 
-                userManager.AddToRole(applicationUser.Id, "Admin");
+            //    userManager.AddToRole(applicationUser.Id, "Admin");
 
-            }
+            //}
         }
 
     }

@@ -20,7 +20,7 @@ namespace eCommerce.WebUI.Controllers
         IRepositoryBase<VoucherType> voucherTypes;
         IRepositoryBase<BasketVoucher> basketVouchers;
         IRepositoryBase<BasketItem> basketItems;
-        IRepositoryBase<BasketVoucher> BasketVoucherId;
+        IRepositoryBase<BasketVoucher> basketVoucherId;
 
 
         BasketService basketService;
@@ -28,7 +28,7 @@ namespace eCommerce.WebUI.Controllers
         public HomeController(IRepositoryBase<Customer> customers, IRepositoryBase<Product> products,
             IRepositoryBase<Basket> baskets, IRepositoryBase<Voucher> vouchers,
             IRepositoryBase<BasketVoucher> basketVouchers, IRepositoryBase<VoucherType> voucherTypes,
-            IRepositoryBase<BasketItem> basketItems, IRepositoryBase<BasketVoucher> BasketVoucherId)
+            IRepositoryBase<BasketItem> basketItems, IRepositoryBase<BasketVoucher> basketVoucherId)
 
         {
             this.customers = customers;
@@ -38,10 +38,11 @@ namespace eCommerce.WebUI.Controllers
             this.basketVouchers = basketVouchers;
             this.voucherTypes = voucherTypes;
             this.basketItems = basketItems;
+            this.basketVoucherId = basketVoucherId;
 
 
             basketService = new BasketService(this.baskets, this.vouchers,
-                this.basketVouchers, this.voucherTypes, this.basketItems, this.BasketVoucherId);
+                this.basketVouchers, this.voucherTypes, this.basketItems, this.basketVoucherId);
         }
         public ActionResult BasketSummary() {
             var model = basketService.GetBasket(this.HttpContext);

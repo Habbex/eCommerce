@@ -2,14 +2,15 @@
 @{
     ViewBag.Title = "Administration";
 }
-<h2>Administration</h2>
+<h1 align="center">Administration Page</h1>
 
 
-<h1>Welcome Admin</h1>
+<h2 align="center">Welcome Admin</h2>
+<hr/>
+    @Html.ActionLink("Manage Products", "ProductList", null, new { @class = "btn btn-lg btn-info" })
+    @Html.ActionLink("Manage Voucher Types", "VoucherTypeList", null, new { @class = "btn btn-lg btn-info" })
+    @Html.ActionLink("Manage Vouchers", "VoucherList", null, new { @class = "btn btn-lg btn-info" })
+    @Html.ActionLink("Manage Users and Roles", "Index", "Roles",null, new { @class = "btn btn-lg btn-info" })
 
-    @Html.ActionLink("Product Admin", "ProductList", null, new { @class = "btn btn-lg btn-info" })
-    @Html.ActionLink("Voucher Types", "VoucherTypeList", null, new { @class = "btn btn-lg btn-info" })
-    @Html.ActionLink("Vouchers", "VoucherList", null, new { @class = "btn btn-lg btn-info" })
-    @Html.ActionLink("Manage Users", "Index", "Roles",null, new { @class = "btn btn-lg btn-info" })
 
 

@@ -1,14 +1,15 @@
-﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+﻿@*@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>*@
+@model eCommerce.WebUI.Models.GroupedUsersandIdentityView
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
-<h2>Roles Listing </h2>
-@Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles") 
+<h2 align="center">Roles and Users Management</h2>
+@Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
 <hr />
 <div>
-    @foreach (var role in Model)
+    @foreach (var role in Model.Roles)
     {
         <p>
             <strong>@role.Name | </strong>
@@ -16,4 +17,46 @@
             @Html.ActionLink("Edit", "Edit", new { roleName = @role.Name })
         </p>
     }
+</div>
+<hr/>
+<div>
+    <table class="table">
+
+        <tr>
+            <th>
+                @Html.DisplayName("User")
+            </th>
+
+            <th>
+                @Html.DisplayName("Roles")
+            </th>
+        </tr>
+        @foreach (var user in Model.UserwithRoles)
+        {
+            <tr style="table-layout: auto">
+                <td>
+                    @Html.DisplayFor(modeluser => user.Users)
+                </td>
+
+                <td colspan="2">
+
+                    @foreach (var role in user.RoleName)
+                {
+                        @Html.DisplayFor(modelrole => role)
+                        @Html.Raw(", ")
+
+                    }
+                </td>
+
+
+                @*<li>@user.Users---</li>
+                    foreach (var role in user.RoleName)
+                    {
+                        <div>@role</div>
+
+                    }*@
+            </tr>
+        }
+
+    </table>
 </div>

@@ -1,0 +1,66 @@
+﻿@model  IEnumerable<eCommerce.WebUI.Models.UserListviewModel>
+
+@{
+    ViewBag.Title = "title";
+    //Layout = "_Layout";
+}
+
+
+
+@*<h2>List of users in role @Model.RoleName </h2>*@
+
+@*@foreach (var users in Model.Users)
+{
+    <li>@users.UserName --- @Model.RoleName </li>
+}*@
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model=> model.Users)
+        </th>
+
+        <th>
+            @Html.DisplayName("Roles")
+        </th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr style="table-layout: auto">
+            <td>
+                @Html.DisplayFor(modeluser => user.Users)
+            </td>
+
+            <td colspan="2">
+
+                @foreach (var role in user.RoleName)
+                {
+                   @Html.DisplayFor(modelrole => role)
+                   @Html.Raw(", ")
+
+                }
+            </td>
+
+
+                @*<li>@user.Users---</li>
+            foreach (var role in user.RoleName)
+            {
+                <div>@role</div>
+
+            }*@
+</tr>
+    }
+
+</table>
+
+@*@{
+            int i = 0;
+        }
+
+        @foreach (var item in Model.Users)
+        {
+            @Html.DisplayFor(modelitem=> item.UserName)
+            @Model.RoleName[i]
+            i++;
+        }*@

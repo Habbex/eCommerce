@@ -35,7 +35,7 @@ namespace eCommerce.WebUI.Controllers
             return View();
         }
 
-      
+
         public ActionResult ProductList()
         {
             var model = products.GetAll();

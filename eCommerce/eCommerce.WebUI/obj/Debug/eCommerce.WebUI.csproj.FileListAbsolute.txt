@@ -227,7 +227,6 @@ F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.WebUI\bin\System.Web.Opt
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.csprojResolveAssemblyReference.cache
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.dll
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce.WebUI\obj\Debug\eCommerce.WebUI.pdb
-F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\EntityFramework.xml
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\eCommerce.WebUI.dll.config
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\eCommerce.WebUI.dll
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\eCommerce.WebUI.pdb
@@ -278,6 +277,7 @@ F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\eCom
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\eCommerce.Modules.Vouchers.PercentOff.pdb
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\eCommerce.Services.pdb
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\Antlr3.Runtime.pdb
+F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\EntityFramework.xml
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\EntityFramework.SqlServer.xml
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\Microsoft.AspNet.Identity.Core.xml
 F:\Programmering\C#\new MVC - Kopia\eCommerce\eCommerce\eCommerce.WebUI\bin\Microsoft.AspNet.Identity.EntityFramework.xml

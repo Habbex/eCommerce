@@ -11,6 +11,10 @@ namespace eCommerce.WebUI.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        //public string UserName { get; set; }
+        //public string RoleName { get; set; }
+
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

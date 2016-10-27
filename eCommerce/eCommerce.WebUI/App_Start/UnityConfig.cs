@@ -52,7 +52,7 @@ namespace eCommerce.WebUI.App_Start
             container.RegisterType<IRepositoryBase<BasketVoucher>, BasketVoucherRepository>();
             container.RegisterType<IRepositoryBase<BasketItem>, BasketItemsRepository>();
             //container.RegisterType<AccountController>(new InjectionConstructor());
-            container.RegisterType<ApplicationDbContext>();
+            container.RegisterType<ApplicationDbContext>(new PerRequestLifetimeManager());
             container.RegisterType<ApplicationUserManager>();
             container.RegisterType <IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new InjectionConstructor(typeof(ApplicationDbContext)));
 

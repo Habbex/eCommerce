@@ -8,6 +8,7 @@ using Microsoft.Owin.Security.DataProtection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace eCommerce.WebUI
 {
@@ -15,9 +16,13 @@ namespace eCommerce.WebUI
 
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> store)
+        private readonly ApplicationDbContext context;
+
+        public ApplicationUserManager(ApplicationDbContext context, IUserStore<ApplicationUser> store)
             : base(store)
         {
+
+            this.context = context;
             //var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
             this.UserValidator = new UserValidator<ApplicationUser>(this)
@@ -57,64 +62,70 @@ namespace eCommerce.WebUI
             //return manager;
 
 
-            
+
         }
 
-        public IQueryable<ApplicationUser> GetUsersInRole(ApplicationDbContext context, string roleName)
+        public IEnumerable<ApplicationUser> GetUsersInRole(string RoleName)
         {
-            if (context !=null && roleName !=null)
+
+
+            if (string.IsNullOrWhiteSpace(RoleName))
             {
-                var roles = context.Roles.Where(r => r.Name == roleName);
-                if (roles.Any())
-                {
-                    var roleId = roles.First().Id;
-                    return from user in context.Users
-                           where user.Roles.Any(r => r.RoleId == roleId)
-                           select user;
-                }
+                throw new ArgumentNullException(nameof(RoleName));
             }
 
-            return null;
+            var role = context.Roles.FirstOrDefault(r => r.Name == RoleName);
+
+
+            if (role == null)
+            {
+                throw new Exception($"Role with this name not found: {RoleName}");
+            }
+
+            var users = context.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id)).ToList();
+
+            return users;
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
-        {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
-            // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
-            {
-                AllowOnlyAlphanumericUserNames = false,
-                RequireUniqueEmail = true
-            };
-            // Configure validation logic for passwords
-            manager.PasswordValidator = new PasswordValidator
-            {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
-            };
-            // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
-            // You can write your own provider and plug in here.
-            manager.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<ApplicationUser>
-            {
-                MessageFormat = "Your security code is: {0}"
-            });
-            manager.RegisterTwoFactorProvider("EmailCode", new EmailTokenProvider<ApplicationUser>
-            {
-                Subject = "Security Code",
-                BodyFormat = "Your security code is: {0}"
-            });
-            manager.EmailService = new EmailService();
-            manager.SmsService = new SmsService();
-            var dataProtectionProvider = options.DataProtectionProvider;
-            if (dataProtectionProvider != null)
-            {
-                manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
-            }
-            return manager;
-        }
+
+        //public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
+        //{
+        //    var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+        //    // Configure validation logic for usernames
+        //    manager.UserValidator = new UserValidator<ApplicationUser>(manager)
+        //    {
+        //        AllowOnlyAlphanumericUserNames = false,
+        //        RequireUniqueEmail = true
+        //    };
+        //    // Configure validation logic for passwords
+        //    manager.PasswordValidator = new PasswordValidator
+        //    {
+        //        RequiredLength = 6,
+        //        RequireNonLetterOrDigit = true,
+        //        RequireDigit = true,
+        //        RequireLowercase = true,
+        //        RequireUppercase = true,
+        //    };
+        //    // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
+        //    // You can write your own provider and plug in here.
+        //    manager.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<ApplicationUser>
+        //    {
+        //        MessageFormat = "Your security code is: {0}"
+        //    });
+        //    manager.RegisterTwoFactorProvider("EmailCode", new EmailTokenProvider<ApplicationUser>
+        //    {
+        //        Subject = "Security Code",
+        //        BodyFormat = "Your security code is: {0}"
+        //    });
+        //    manager.EmailService = new EmailService();
+        //    manager.SmsService = new SmsService();
+        //    var dataProtectionProvider = options.DataProtectionProvider;
+        //    if (dataProtectionProvider != null)
+        //    {
+        //        manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+        //    }
+        //    return manager;
+        //}
     }
 
     public class EmailService : IIdentityMessageService

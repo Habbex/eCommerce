@@ -1,10 +1,10 @@
-﻿@model IEnumerable<eCommerce.WebUI.Models.UserListviewModel>
+﻿@*@model eCommerce.WebUI.Controllers.GetUsersWithRolesViewModel*@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "ManageUserRoles";
 }
 <h2>Manage User Roles</h2>
-@Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
+@Html.ActionLink("Back", "Index") | @Html.ActionLink("Create New Role", "Create")
 <hr />
 <h2>Role Add to User</h2>
 @using (Html.BeginForm("RoleAddToUser", "Roles"))
@@ -13,7 +13,7 @@
     @Html.ValidationSummary(true)
 
     <p>
-        Username : @Html.TextBox("UserName")
+        Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select..")
         Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
 
     </p>
@@ -21,87 +21,21 @@
     <input type="submit" value="Save" />
 
 }
-@*@foreach (var user in Model.ToList())
-{
-    <div> @user.UserName -- </div>
-    foreach (var role in user.RoleNames)
+
+
+
+
+
+
+
+
+@*<ul>
+    @foreach (var u in Model)
     {
-        <div> @role </div>
+        <li>@u.UserName - @u.RoleNames</li>
     }
-    <br />
-}*@
+</ul>*@
 
-
-@*<h2> List of users </h2>
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model=> model.User)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Roles)
-        </th>
-    </tr>*@
-@*@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Roles)
-        </td>
-    </tr>
-}*@
-
-
-
-@*</table>*@
-@*<br/>
-@using (Html.BeginForm("GetUsers", "Roles", FormMethod.Get))
-{
-    <div class="form-group">
-        Search:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
-
-        <input type="submit" value="Search" />
-    </div>
-}
-<br />
-
-<table class="table">
-    <tr>
-        <th>
-            Email
-        </th>
-
-
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-
-
-        </tr>
-    }
-
-
-</table>
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-@Html.PagedListPager(Model,
-    page => Url.Action("Index",
-    new
-    {
-        page,
-        searchStringUserNameOrEmail = ViewBag.searchStringUserNameOrEmail,
-        currentFilter = ViewBag.CurrentFilter
-    }))
-<hr />*@
 
 
 
@@ -111,7 +45,7 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
         {
             @Html.AntiForgeryToken()
             <p>
-                Username : @Html.TextBox("UserName")
+                Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select..")
                 <input type="submit" value="Get Roles for this User" />
             </p>
         }
@@ -135,7 +69,7 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
             @Html.ValidationSummary(true)
 
             <p>
-                Username : @Html.TextBox("UserName")
+                Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select..")
                 Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
             </p>
 

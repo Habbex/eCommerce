@@ -1,8 +1,10 @@
-﻿using eCommerce.WebUI.Models;
+﻿using eCommerce.WebUI.App_Start;
+using eCommerce.WebUI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.DataProtection;
+using Microsoft.Practices.Unity.Mvc;
 using Owin;
 using System.Web.Mvc;
 
@@ -18,8 +20,8 @@ namespace eCommerce.WebUI
             ConfigureAuth(app);
             //app.CreatePerOwinContext(ApplicationDbContext.Create);
             //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-
-            app.CreatePerOwinContext(() => DependencyResolver.Current.GetService<ApplicationUserManager>()); // <-
+            DependencyResolver.SetResolver(new UnityDependencyResolver(UnityConfig.GetConfiguredContainer()));
+            //app.CreatePerOwinContext(() => DependencyResolver.Current.GetService<ApplicationUserManager>());
             DataProtectionProvider = app.GetDataProtectionProvider();
 
         }
