@@ -21,10 +21,28 @@ namespace eCommerce.Model
         }
 
         public decimal BasketTotal() {
-            decimal? total = (from item in BasketItems
-                              select (int?)item.Quantity * item.Product.Price).Sum();
+            if (_basketVouchers !=null)
+            {
+                decimal? total = (from item in BasketItems
+                                  select (int?)item.Quantity * item.Product.Price).Sum();
 
-            return total ?? decimal.Zero;
+                decimal? vouchertotal = (from item in BasketVouchers
+                                         select (int?)item.Value).Sum();
+
+                decimal? basketTotal = total - vouchertotal;
+                return basketTotal ?? decimal.Zero;
+            }
+            else
+            {
+                decimal? total = (from item in BasketItems
+                                  select (int?)item.Quantity * item.Product.Price).Sum();
+                return total ?? decimal.Zero;
+            }
+
+
+
+
+
         }
 
         public decimal BasketItemCount() {
@@ -52,8 +70,8 @@ namespace eCommerce.Model
             _basketVouchers.Add((BasketVoucher) voucher);
         }
 
-        
 
-        
+
+
     }
 }

@@ -166,8 +166,8 @@ namespace eCommerce.Services
             basketVouchers.Commit();
 
             return success;
-            
-        } 
+
+        }
 
         public bool DeleteItem(HttpContextBase httpContext, int basketItemId, int quantity)
 

@@ -65,7 +65,7 @@
                 @Html.DisplayFor(modelItem => item.VoucherDescription)
             </td>
             <td>
-                @String.Format("{0:c}", item.Value)
+                @String.Format("- {0:c}", item.Value)
             </td>
             <td>
                @Html.ActionLink("Delete", "DeleteVoucherFromBasket", new { id = item.BasketVoucherId })
@@ -76,7 +76,9 @@
 </table>
 
 
-
+<hr />
+<h4 align="right">Total: @Html.Raw(Model.BasketTotal().ToString("C")) </h4>
+<hr />
     @using (Html.BeginForm("AddBasketVoucher", "Home"))
     {
         @Html.AntiForgeryToken()
